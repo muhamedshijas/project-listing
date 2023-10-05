@@ -1,16 +1,24 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { createRoot } from "react-dom/client";
 import './index.css';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { BrowserRouter } from 'react-router-dom'
+import store from './store/store.js'
 const container = document.getElementById("root");
 const root = createRoot(container);
 
+
+
 root.render(
   <React.StrictMode>
-    <App />
+  <Provider store={store}>
+  <BrowserRouter>
+  <App />
+  </BrowserRouter>
+  </Provider>
   </React.StrictMode>
 );
 
