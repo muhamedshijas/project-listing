@@ -1,8 +1,12 @@
 import React from 'react'
-
+import AddCategory from '../components/AddCategory/AddCategory';
+import Navbar from '../components/Navbar/Navbar';
 function AddCategoryPage() {
   return (
-    <div>AddCategoryPage</div>
+    <div>
+      <Navbar/>
+      <AddCategory/>
+    </div>
   )
 }
 
