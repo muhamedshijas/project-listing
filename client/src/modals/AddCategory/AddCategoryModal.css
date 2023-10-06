@@ -1,0 +1,34 @@
+.add-category-main{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(5, 5, 5, 0.141);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-category-main .add-category{
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5px;
+    background-color: #DBE2EF;
+    height: 400px;
+    width: 600px;
+    box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
+}
+.add-category-main .add-category .close{
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 42px;
+}
+.add-category .close .close-icon{
+    cursor: pointer;
+}

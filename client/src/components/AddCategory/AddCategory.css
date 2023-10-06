@@ -1,0 +1,46 @@
+.category-main {
+  padding: 20px;
+  width: 100%;
+  height: 100vh;
+}
+
+.category-main .category-cards{
+
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.category-main .cards {
+  margin-top: 20px;
+  height: 150px;
+  background-color: #112D4E;
+  width: 300px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 29px;
+  color: #DBE2EF;
+}
+
+.category-main button{
+    height: 60px;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #3F72AF;
+    color: #DBE2EF;
+    border: none;
+    border-radius: 5px;
+}
+.category-main .btns{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
