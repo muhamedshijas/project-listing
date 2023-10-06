@@ -3,7 +3,7 @@ import cors from 'cors'
 import path from 'path'
 import cookieParser from 'cookie-parser';
 import dbConnect from './config/dbConnect.js';
-
+import category from './Routers/categoryRouter.js'
 const app= express()
 app.use(cookieParser());
 app.use(express.json({ limit: '50mb' }));
@@ -17,10 +17,9 @@ app.use(
     credentials: true,
   })
 );
-app.get('/getProduct',(req,res)=>{
-  console.log("hiii") 
-})
+
 dbConnect() 
+app.use('/category',category)
 app.listen(5000,()=>{
     console.log("app running on port 5000");
 })

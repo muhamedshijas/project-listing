@@ -5,23 +5,32 @@ import './AddCategoryModal.css'
 import { RiCloseLine } from "react-icons/ri";
 import axios from 'axios';
 
-function AddCategoryModal({ setShowModal }) {
+function AddCategoryModal({ setShowModal,categories }) {
 
     const [categoryType, setCategoryType] = useState('');
-    const [mainCategory, setMainCategory] = useState('');{}
-    const [parentCategory, setParentCategory] = useState('');
+    const [mainCategory, setMainCategory] = useState(''); { }
+    const [parent, setParent] = useState('');
     const [subCategory, setSubCategory] = useState('');
+    const [errMessage, setErrMessage] = useState('')
 
-    const handleCategoryTypeChange = (e) => {
-        setCategoryType(e.target.value);
-    };
-    async function handleSubmit(){
-        if(categoryType=='main'){
+  
+    const handleCategoryChange = (e) => {
+    setParent(e.target.value);
+  };
+    async function handleSubmit() {
+        if (categoryType == 'main') {
             console.log("main")
-            await axios.post("/addCategory",{mainCategory})
-        }else{
+            const response = await axios.post("/category/addcategory", { mainCategory })
+            console.log(response);
+            if (!response.data.err) {
+                setShowModal(false)
+            } else {
+                setErrMessage(response.data.message)
+                console.log("errr")
+            }
+        } else {
             console.log("sub")
-            await axios.post('/addcategory',{subCategory,parentCategory})
+            await axios.post('/category/addsubcategory', { subCategory, parent })
         }
     }
     return (
@@ -29,7 +38,12 @@ function AddCategoryModal({ setShowModal }) {
             <div className="add-category">
                 <div className="close" > <RiCloseLine className='close-icon' onClick={() => { setShowModal(false) }} /> </div>
                 <h1>Add Category</h1>
-
+                {
+                    errMessage &&
+                    <div className="login-row" style={{ justifyContent: "flex-start" }}>
+                        <p className='text-danger'>{errMessage}</p>
+                    </div>
+                }
                 <MDBDropdown>
                     <MDBDropdownToggle caret color="primary">
                         Select Category Type
@@ -42,33 +56,34 @@ function AddCategoryModal({ setShowModal }) {
 
                 {categoryType === 'main' && (
                     <div className="main-category">
-                    <MDBInput
-                      label="Main Category Name"
-                      value={mainCategory}
-                      onChange={(e) => setMainCategory(e.target.value)}
-                      type="text"
-                    />
-                    <button onClick={handleSubmit}>Submit</button>
-                    </div>
-                  )}
-
-                  {categoryType === 'sub' && (
-                    <div className='sub-category'>
-                      <MDBInput
-                        label="Parent Category Name"
-                        value={parentCategory}
-                        onChange={(e) => setParentCategory(e.target.value)}
-                        type="text"
-                      />
-                      <MDBInput
-                        label="Sub Category Name"
-                        value={subCategory}
-                        onChange={(e) => setSubCategory(e.target.value)}
-                        type="text"
+                        <MDBInput
+                            label="Main Category Name"
+                            value={mainCategory}
+                            onChange={(e) => setMainCategory(e.target.value)}
+                            type="text"
                         />
                         <button onClick={handleSubmit}>Submit</button>
                     </div>
-                  )}
+                )}
+
+                {categoryType === 'sub' && (
+                    <div className='sub-category'>
+                        <select name="" id="" onChange={handleCategoryChange}>Choose Category 
+                        {
+                            categories.map((item)=>{
+                                return<option value={item._id}>{item.categoryName}</option>
+                            })
+                        }
+                        </select>
+                        <MDBInput
+                            label="Sub Category Name"
+                            value={subCategory}
+                            onChange={(e) => setSubCategory(e.target.value)}
+                            type="text"
+                        />
+                        <button onClick={handleSubmit}>Submit</button>
+                    </div>
+                )}
             </div>
         </div>
     )
