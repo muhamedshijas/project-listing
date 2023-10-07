@@ -5,7 +5,7 @@ import './AddCategoryModal.css'
 import { RiCloseLine } from "react-icons/ri";
 import axios from 'axios';
 
-function AddCategoryModal({ setShowModal,categories }) {
+function AddCategoryModal({ setShowModal,categories,setRefresh,refresh}) {
 
     const [categoryType, setCategoryType] = useState('');
     const [mainCategory, setMainCategory] = useState(''); { }
@@ -23,6 +23,7 @@ function AddCategoryModal({ setShowModal,categories }) {
             const response = await axios.post("/category/addcategory", { mainCategory })
             console.log(response);
             if (!response.data.err) {
+                setRefresh(!refresh)
                 setShowModal(false)
             } else {
                 setErrMessage(response.data.message)

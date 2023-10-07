@@ -8,7 +8,9 @@
 
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    padding: 10px;
+    justify-content: center;
+
 }
 .category-main .cards {
   margin-top: 20px;
@@ -21,6 +23,7 @@
   align-items: center;
   font-size: 29px;
   color: #DBE2EF;
+  flex-direction: column;
 }
 
 .category-main button{
@@ -44,3 +47,18 @@
     margin-top: 50px;
 }
 
+.category-main .category-cards .icons{
+  width: 40%;
+  justify-content: space-around;
+  display: flex;
+}
+.category-cards .card{
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  width: 100%;
+}
+.category-main .category-cards .category-row{
+  width: 100%;
+  display: flex;
+}

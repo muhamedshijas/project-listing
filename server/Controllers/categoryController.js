@@ -35,3 +35,14 @@ export async function getCatgories(req,res){
     console.log(categories)
     res.json({err:false,categories})
 }
+export async function deleteCategory(req,res){
+    try{
+        const _id=req.params.id
+        console.log(_id)
+        await categoryModel.findByIdAndDelete({_id})
+        console.log("deleted successfully")
+        res.json({err:false,message:"category deleted succesfully"})
+    }catch(err){
+        console.log(err)
+    }
+}
