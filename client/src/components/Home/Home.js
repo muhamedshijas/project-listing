@@ -8,7 +8,9 @@ function Home() {
     <img src={image} alt="" />
     <h1>Welcome to Dashboard</h1>
     <div className="btns">
+    <Link to='/addproduct'>
     <button>Manage Products</button>
+    </Link>
     <Link to='/addcategory'>
     <button className='btn-2'>Manage Categories</button>
     </Link>

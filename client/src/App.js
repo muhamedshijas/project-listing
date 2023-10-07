@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import AddCategoryPage from './pages/AddCategoryPage';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
+import AddProductPage from './pages/AddProductPage';
 function App() {
   axios.defaults.baseURL = "http://localhost:5000/";
   axios.defaults.withCredentials = true;
@@ -14,6 +15,7 @@ function App() {
     <Routes>
             <Route path='/' element={<HomePage/>}/>
             <Route path='/addcategory' element={<AddCategoryPage/>}/>
+            <Route path='/addproduct' element={<AddProductPage/>}/>
         </Routes>
    </div>
   );

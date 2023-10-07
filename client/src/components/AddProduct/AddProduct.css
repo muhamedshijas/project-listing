@@ -1,0 +1,21 @@
+.product-main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.products-card{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #dbe2ef;
+}
+.product-main .products-card .sub-categories{
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: space-around;
+}
