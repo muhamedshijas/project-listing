@@ -4,61 +4,69 @@
   height: 100vh;
 }
 
-.category-main .category-cards{
-
-    width: 100%;
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-
+.category-main .category-cards {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 }
 .category-main .cards {
   margin-top: 20px;
   height: 150px;
-  background-color: #112D4E;
+  background-color: #112d4e;
   width: 300px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 29px;
-  color: #DBE2EF;
+  color: #dbe2ef;
   flex-direction: column;
 }
 
-.category-main button{
-    height: 60px;
-    width: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 500;
-    background-color: #3F72AF;
-    color: #DBE2EF;
-    border: none;
-    border-radius: 5px;
+.category-main button {
+  height: 60px;
+  width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #3f72af;
+  color: #dbe2ef;
+  border: none;
+  border-radius: 5px;
 }
-.category-main .btns{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+.category-main .btns {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 }
 
-.category-main .category-cards .icons{
+.category-main .category-cards .icons {
   width: 40%;
   justify-content: space-around;
   display: flex;
 }
-.category-cards .card{
+.category-cards .card {
   display: flex;
   justify-content: space-around;
-  gap: 10px;
   width: 100%;
 }
-.category-main .category-cards .category-row{
+.category-main .category-cards .main-category-row {
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.category-main .category-cards .main-category-row .sub-cards{
+  background-color: #3f72af;
+}
+.category-main .category-cards .main-category-row .sub-cards p{
+  font-size: 16px;
+  font-weight: 400;
 }

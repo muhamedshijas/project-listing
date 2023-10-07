@@ -31,7 +31,14 @@ function AddCategoryModal({ setShowModal,categories,setRefresh,refresh}) {
             }
         } else {
             console.log("sub")
-            await axios.post('/category/addsubcategory', { subCategory, parent })
+           const response= await axios.post('/category/addsubcategory', { subCategory, parent })
+            if (!response.data.err) {
+                setRefresh(!refresh)
+                setShowModal(false)
+            } else {
+                setErrMessage(response.data.message)
+                console.log("errr")
+            }
         }
     }
     return (
@@ -69,10 +76,11 @@ function AddCategoryModal({ setShowModal,categories,setRefresh,refresh}) {
 
                 {categoryType === 'sub' && (
                     <div className='sub-category'>
-                        <select name="" id="" onChange={handleCategoryChange}>Choose Category 
+                        <select name="" id="" onChange={handleCategoryChange}>
+                        <option value="">Choose One</option>
                         {
                             categories.map((item)=>{
-                                return<option value={item._id}>{item.categoryName}</option>
+                                return <option value={item._id}>{item.categoryName}</option>
                             })
                         }
                         </select>

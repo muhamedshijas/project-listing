@@ -10,6 +10,8 @@ import Swal from 'sweetalert2'
 function AddCategory() {
   const [showModal, setShowModal] = useState(false)
   const [refresh, setRefresh] = useState(false)
+  const [mainCategories, setMainCategories] = useState([])
+  const [subCategories, setSubCategories] = useState([])
   const [categories, setCategories] = useState([])
   useEffect(() => {
     (
@@ -17,7 +19,10 @@ function AddCategory() {
         try {
           const response = await axios.get('/category/getcategory')
           console.log(response.data)
+          setMainCategories(response.data.mainCategories)
           setCategories(response.data.categories)
+          setSubCategories(response.data.subCategories)
+
         }
         catch (err) {
           console.log(err)
@@ -25,7 +30,7 @@ function AddCategory() {
       }
     )()
   }, [refresh])
-  console.log(categories)
+  console.log(mainCategories)
   function handleModal() {
     setShowModal(true)
   }
@@ -37,7 +42,7 @@ function AddCategory() {
       showCancelButton: true,
       confirmButtonColor: '#7e3af2',
       cancelButtonColor: '##a8a8a8',
-      confirmButtonText: 'Yes, Logout!'
+      confirmButtonText: 'Yes, Delete!'
     }).then(async (result) => {
       if (result.isConfirmed) {
         await axios.get("/category/deletecategory/"+id)
@@ -48,10 +53,10 @@ function AddCategory() {
   return (
     <div className="category-main">
       <div className="category-cards">
-        <Row className="category-row">
-
+        <Row className="main-category-row">
+          <h2 className="text-center">Main Categories</h2>
           {
-            categories.map((item,index ) => {
+            mainCategories.map((item,index ) => {
               return <Col xs={6} md={3} className="card-grp" >
                 <div className="cards">
                   <b>{item.categoryName}</b>
@@ -64,7 +69,23 @@ function AddCategory() {
             })
           }
         </Row>
-
+          <Row className="main-category-row">
+          <h2 className="text-center">Sub Categories</h2>
+          {
+            subCategories.map((item,index ) => {
+              return <Col xs={6} md={3} className="card-grp" >
+                <div className="cards sub-cards">
+                  <b>{item.categoryName}</b>
+                  <p>Parent Category:{item.parent.categoryName}</p>
+                  <div className="icons">
+                  <MDBIcon fas icon="trash-alt" onClick={()=>handleDelete(item._id)} />
+                  <MDBIcon fas icon="edit" />
+                  </div>
+                </div>
+              </Col>
+            })
+          }
+        </Row>
       </div>
       <div className="btns">
         <button onClick={handleModal}>Add Category</button>
